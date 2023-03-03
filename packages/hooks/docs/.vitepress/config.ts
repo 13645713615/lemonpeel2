@@ -3,7 +3,7 @@
  * @version: 
  * @Author: Carroll
  * @Date: 2023-01-04 17:38:24
- * @LastEditTime: 2023-03-03 20:55:30
+ * @LastEditTime: 2023-03-03 21:01:20
  */
 import { defineConfig } from 'vitepress';
 import { applyPlugins } from '@ruabick/md-demo-plugins';
@@ -15,7 +15,7 @@ import { resolve } from 'path';
 export default defineConfig({
   lang: 'zh-CN',
   lastUpdated: true,
-  base: process.env.NODE_ENV === 'production' ? '/' : '/',
+  base: process.env.NODE_ENV === 'production' ? '/lemonpeel2' : '/',
   // locales: {
   //   '/': {
   //     lang: 'zh-CN',
