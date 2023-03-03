@@ -1,7 +1,7 @@
 {
   "name": "@lemonpeel2/hooks",
   "version": "0.0.0",
-  "description": "",
+  "description": "hooks",
   "type": "module",
   "types": "./lib/index.d.ts",
   "main": "./lib/hooks.umd.cjs",

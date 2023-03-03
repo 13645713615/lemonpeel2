@@ -5,6 +5,9 @@
   "main": "index.js",
   "private": "true",
   "scripts": {
+    "release": "pnpm changeset publish",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
     "build": "pnpm --filter=@lemonpeel2/* run build",
     "clear": "rimraf 'packages/*/{lib,node_modules}' && rimraf node_modules"
   },
