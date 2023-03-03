@@ -3,7 +3,7 @@
  * @version: 
  * @Author: Carroll
  * @Date: 2023-02-02 14:40:39
- * @LastEditTime: 2023-02-06 14:38:38
+ * @LastEditTime: 2023-03-03 18:02:45
  */
 import type { Plugin } from "../types";
 import { Cache, cachePromise } from "@lemonpeel2/utils"
@@ -23,9 +23,17 @@ interface CacheData<Date, Params> {
     time: number
 }
 
-const cache = new Cache("@@ServiceCache")
+const cache = (function () {
+    let instance: Cache;
+    return () => {
+        if (!instance) instance = new Cache("@@ServiceCache")
+        return instance
+    }
+})();
 
 export function useCachePlugin<Date, Params extends any[]>(options: UseCachePluginOptions): Plugin<Date, Params> {
+
+    const cacheStorage = cache();
 
     const { cacheKey, cacheTime = 300000, staleTime = 0 } = options
 
@@ -34,7 +42,7 @@ export function useCachePlugin<Date, Params extends any[]>(options: UseCachePlug
     if (!cacheKey) return noop
 
     function resubscribe(service: Service<Date, Params>) {
-        unSubscribe = cache.subscribe<CacheData<Date, Params>>(cacheKey, (value) => {
+        unSubscribe = cacheStorage.subscribe<CacheData<Date, Params>>(cacheKey, (value) => {
             service.state.data = value?.data;
         })
     }
@@ -43,7 +51,7 @@ export function useCachePlugin<Date, Params extends any[]>(options: UseCachePlug
 
     return (service) => {
 
-        const cacheData = cache.getItem<CacheData<Date, Params>>(cacheKey);
+        const cacheData = cacheStorage.getItem<CacheData<Date, Params>>(cacheKey);
         if (cacheData && Object.hasOwnProperty.call(cacheData, 'data')) {
             service.state.data = cacheData.data
             service.state.params = cacheData.params
@@ -52,7 +60,7 @@ export function useCachePlugin<Date, Params extends any[]>(options: UseCachePlug
         resubscribe(service);
 
         service.emiter.on(HandlerTopic.onBefore, () => {
-            const cacheData = cache.getItem<CacheData<Date, Params>>(cacheKey);
+            const cacheData = cacheStorage.getItem<CacheData<Date, Params>>(cacheKey);
             if (!cacheData || !Object.hasOwnProperty.call(cacheData, 'data')) {
                 return {};
             }
@@ -82,7 +90,7 @@ export function useCachePlugin<Date, Params extends any[]>(options: UseCachePlug
 
         service.emiter.on(HandlerTopic.onSuccess, (data, params) => {
             unSubscribe();
-            cache.setItem<CacheData<Date, Params>>(cacheKey, {
+            cacheStorage.setItem<CacheData<Date, Params>>(cacheKey, {
                 data,
                 params,
                 time: Date.now()

@@ -3,7 +3,7 @@
  * @version: 
  * @Author: Carroll
  * @Date: 2023-01-04 17:38:24
- * @LastEditTime: 2023-03-02 15:41:00
+ * @LastEditTime: 2023-03-03 16:01:11
  */
 
 import type { DefaultTheme } from "vitepress"
@@ -37,8 +37,7 @@ const Router: Record<string, string[] | string> = {
     'useFilter',
     'useSorter',
     'useRecast'
-  ],
-  Worker: ['useWorkerFunction'],
+  ]
 };
 
 export function getRouterConfig(langPrefix: string = '/'): DefaultTheme.SidebarItem[] {

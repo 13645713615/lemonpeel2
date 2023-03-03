@@ -3,11 +3,12 @@
  * @version: 
  * @Author: Carroll
  * @Date: 2023-01-06 10:15:03
- * @LastEditTime: 2023-02-03 17:30:41
+ * @LastEditTime: 2023-03-03 16:20:48
  */
 
 import { Ref, ref, watch, effectScope } from "vue-demi";
 import { isFunction, debounce } from "lodash"
+import { isBrowser } from "@lemonpeel2/utils";
 
 export interface UseStorageStateOptions {
     expires?: number,
@@ -23,10 +24,10 @@ interface StorageState<T> {
 
 export function useStorageState<T>(localStoragKey: string, defaultValue: T | (() => T), options?: UseStorageStateOptions): Ref<T> {
 
-    const { storage = localStorage, expires = 0, immediate = false, wait = 300 } = options ?? {}
+    const { storage = isBrowser ? localStorage : undefined, expires = 0, immediate = false, wait = 300 } = options ?? {}
 
     function getStorageState(): T {
-        const raw = storage.getItem(localStoragKey);
+        const raw = storage?.getItem(localStoragKey);
         if (raw) {
             try {
                 const state = JSON.parse(raw) as StorageState<T>;
@@ -43,7 +44,7 @@ export function useStorageState<T>(localStoragKey: string, defaultValue: T | (()
     function setStorageState(value: T) {
         const state: StorageState<T> = { value };
         if (expires) state.expires = Date.now() + expires;
-        storage.setItem(localStoragKey, JSON.stringify(state));
+        storage?.setItem(localStoragKey, JSON.stringify(state));
     }
 
     const state = ref(getStorageState()) as Ref<T>;

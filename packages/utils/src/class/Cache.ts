@@ -3,13 +3,13 @@
  * @version: 
  * @Author: Carroll
  * @Date: 2023-02-01 17:22:37
- * @LastEditTime: 2023-02-02 18:09:22
+ * @LastEditTime: 2023-03-03 17:54:59
  */
 
 import { toType } from "../lang";
 import type { DataType } from "../lang";
 import { debounce, wrap } from "lodash"
-import { subscribeEventListener } from "../dom";
+import { isBrowser, subscribeEventListener } from "../dom";
 import Emiter from "./Emiter";
 
 interface RecordData {
@@ -23,6 +23,8 @@ export interface CacheStorage {
     setItem(key: string, value: string): void
 }
 
+
+
 export class Cache {
 
     get length(): number {
@@ -33,18 +35,22 @@ export class Cache {
 
     private emiter: Emiter<string, Record<string, (value: any) => void>> = new Emiter();
 
-    constructor(cacheKey: string, private time: number = -1, private storage: CacheStorage = localStorage) {
+    constructor(cacheKey: string, private time: number = -1, private storage: CacheStorage | undefined = isBrowser ? localStorage : undefined) {
 
-        this.dataPool = jsonToMap(this.storage.getItem(cacheKey));
+        if (!storage) {
+            console.error('storage cannot be empty')
+        }
+
+        this.dataPool = jsonToMap(this.storage?.getItem(cacheKey));
 
         const update = () => {
-            this.storage.setItem(cacheKey, mapToJson(this.dataPool))
+            this.storage?.setItem(cacheKey, mapToJson(this.dataPool))
         }
 
         const debounceUpdate = debounce(update, 1000, { maxWait: 3000 })
 
-        this.trigger = wrap(this.trigger,  (value, ...args) => {
-            value.call(this,...args);
+        this.trigger = wrap(this.trigger, (value, ...args) => {
+            value.call(this, ...args);
             debounceUpdate();
         })
 
@@ -93,7 +99,7 @@ export class Cache {
 }
 
 
-function jsonToMap(json: string | null): Map<string, RecordData> {
+function jsonToMap(json?: string | null): Map<string, RecordData> {
     if (json) {
         try {
             const array: Array<[string, RecordData]> = JSON.parse(json);

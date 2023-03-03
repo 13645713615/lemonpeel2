@@ -27,8 +27,12 @@
     "lint-fix": "yarn lint -- --fix",
     "release": "np"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "vue3",
+    "typescript",
+    "hooks"
+  ],
+  "author": "carroll118",
   "license": "MIT",
   "devDependencies": {
     "@ruabick/md-demo-plugins": "latest",

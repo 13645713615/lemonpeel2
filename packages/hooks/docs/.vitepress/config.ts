@@ -3,7 +3,7 @@
  * @version: 
  * @Author: Carroll
  * @Date: 2023-01-04 17:38:24
- * @LastEditTime: 2023-03-02 15:58:00
+ * @LastEditTime: 2023-03-03 16:07:15
  */
 import { defineConfig } from 'vitepress';
 import { applyPlugins } from '@ruabick/md-demo-plugins';
@@ -31,7 +31,7 @@ export default defineConfig({
   title:'Lemonpeel',
   description: '快速搭建网站的工具和组件',
   themeConfig: {
-    logo: '/logo.svg',
+    // logo: '/logo.svg',
     // localeLinks: {
     //   text: '',
     //   items: [
@@ -77,7 +77,7 @@ export default defineConfig({
       indexName: 'index_name'
     },
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/lemonpeel' },
+      { icon: 'github', link: 'https://github.com/13645713615/lemonpeel2/tree/main/packages/hooks' },
     ],
   },
   vue: {},
@@ -85,7 +85,7 @@ export default defineConfig({
     plugins: [genTemp(), genApiDoc()],
     resolve: {
       alias: {
-        '@lemonpeel2/hooks': resolve('./src/'),
+        '@lemonpeel2/hooks': resolve('./lib/hooks.js'),
       },
     },
   },

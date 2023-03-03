@@ -10,20 +10,23 @@ map:
 
 ### 基础用法
 
+
 <demo src="./demo/demo.vue"
   lang="vue"
   title="基础用法"
   desc="刷新页面后，可以看到输入框中的内容被从 localStorage 中恢复了。">
 </demo>
 
+
 ### 存储对象
 
+<ClientOnly>
 <demo src="./demo/demo1.vue"
   lang="vue"
   title="存储复杂类型数据"
   desc="useStorageState 会自动处理序列化和反序列化的操作">
 </demo>
-
+</ClientOnly>
 
 ## API
 
