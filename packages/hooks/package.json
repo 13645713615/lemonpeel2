@@ -1,0 +1,56 @@
+{
+  "name": "@lemonpeel2/hooks",
+  "version": "0.0.0",
+  "description": "",
+  "type": "module",
+  "types": "./lib/index.d.ts",
+  "main": "./lib/hooks.umd.cjs",
+  "module": "./lib/hooks.js",
+  "files": [
+    "lib"
+  ],
+  "exports": {
+    ".": {
+      "import": "./lib/hooks.js",
+      "require": "./lib/hooks.umd.cjs"
+    }
+  },
+  "scripts": {
+    "dev": "initial-scan docs && vitepress dev .docs --host",
+    "build": "vite build",
+    "site:build": "initial-scan docs && cross-env NODE_ENV=production vitepress build .docs",
+    "serve": "cross-env NODE_ENV=production vitepress serve .docs --host",
+    "deploy": "gh-pages -d .docs/.vitepress/dist -t true",
+    "docs-build-deploy": "yarn docs-build && yarn docs-deploy",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "lint": "eslint src/**/*.{vue,js,ts,tsx}",
+    "lint-fix": "yarn lint -- --fix",
+    "release": "np"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@ruabick/md-demo-plugins": "latest",
+    "@ruabick/vite-plugin-gen-api-doc": "latest",
+    "@ruabick/vite-plugin-gen-temp": "latest",
+    "@ruabick/vitepress-demo-block": "latest",
+    "@types/lodash": "^4.14.191",
+    "@types/mockjs": "^1.0.7",
+    "@vitejs/plugin-vue": "^3.0.1",
+    "cross-env": "^7.0.3",
+    "gh-pages": "^4.0.0",
+    "mockjs": "^1.1.0",
+    "np": "^7.6.2",
+    "vite": "latest",
+    "vite-plugin-dts": "^1.4.0",
+    "vitepress": "latest",
+    "vue": "latest",
+    "@lemonpeel2/utils": "workspace:^1.0.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.20",
+    "@lemonpeel2/utils": "workspace:^1.0.0",
+    "vue-demi": "^0.13.11"
+  }
+}

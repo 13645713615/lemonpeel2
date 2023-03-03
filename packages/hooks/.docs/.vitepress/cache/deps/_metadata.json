@@ -1,0 +1,44 @@
+{
+  "hash": "da466acb",
+  "browserHash": "52757efc",
+  "optimized": {
+    "vue": {
+      "src": "../../../../../../node_modules/.pnpm/vue@3.2.47/node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "file": "vue.js",
+      "fileHash": "7428db71",
+      "needsInterop": false
+    },
+    "@ruabick/vitepress-demo-block": {
+      "src": "../../../../../../node_modules/.pnpm/@ruabick+vitepress-demo-block@0.3.1/node_modules/@ruabick/vitepress-demo-block/dist/vitepress-demo-block.js",
+      "file": "@ruabick_vitepress-demo-block.js",
+      "fileHash": "e8ba8190",
+      "needsInterop": false
+    },
+    "mockjs": {
+      "src": "../../../../../../node_modules/.pnpm/mockjs@1.1.0/node_modules/mockjs/dist/mock.js",
+      "file": "mockjs.js",
+      "fileHash": "d9805783",
+      "needsInterop": true
+    },
+    "vue-demi": {
+      "src": "../../../../../../node_modules/.pnpm/vue-demi@0.13.11_vue@3.2.47/node_modules/vue-demi/lib/index.mjs",
+      "file": "vue-demi.js",
+      "fileHash": "74239ba5",
+      "needsInterop": false
+    },
+    "lodash": {
+      "src": "../../../../../../node_modules/.pnpm/lodash@4.17.20/node_modules/lodash/lodash.js",
+      "file": "lodash.js",
+      "fileHash": "758be74c",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-NOFXYDAQ": {
+      "file": "chunk-NOFXYDAQ.js"
+    },
+    "chunk-FAW2VN4A": {
+      "file": "chunk-FAW2VN4A.js"
+    }
+  }
+}

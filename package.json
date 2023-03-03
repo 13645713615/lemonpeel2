@@ -1,0 +1,26 @@
+{
+  "name": "lemonpeel2",
+  "version": "1.0.0",
+  "description": "快速构建网页工具",
+  "main": "index.js",
+  "private": "true",
+  "scripts": {
+    "build": "pnpm --filter=@lemonpeel/* run build",
+    "clear": "rimraf 'packages/*/{lib,node_modules}' && rimraf node_modules"
+  },
+  "keywords": [
+    "javascript","typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/13645713615/lemonpeel2.git"
+  },
+  "author": "carroll118",
+  "license": "ISC",
+  "devDependencies": {
+    "@changesets/cli": "^2.26.0",
+    "@types/node": "^18.11.18",
+    "typescript": "^4.9.4",
+    "vite": "^4.0.3"
+  }
+}
