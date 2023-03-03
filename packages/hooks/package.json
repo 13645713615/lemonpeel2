@@ -28,12 +28,16 @@
     "release": "np"
   },
   "keywords": [
-    "vue3",
+    "javascript",
     "typescript",
-    "hooks"
+    "vue",
+    "vue3",
+    "hooks",
+    "vue-hooks"
   ],
   "author": "carroll118",
   "license": "MIT",
+  "homepage": "https://13645713615.github.io/lemonpeel2/",
   "devDependencies": {
     "@ruabick/md-demo-plugins": "latest",
     "@ruabick/vite-plugin-gen-api-doc": "latest",

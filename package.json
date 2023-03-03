@@ -9,12 +9,18 @@
     "clear": "rimraf 'packages/*/{lib,node_modules}' && rimraf node_modules"
   },
   "keywords": [
-    "javascript","typescript"
+    "javascript",
+    "typescript",
+    "vue",
+    "vue3",
+    "hooks",
+    "vue-hooks"
   ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/13645713615/lemonpeel2.git"
   },
+  "homepage": "https://13645713615.github.io/lemonpeel2/",
   "author": "carroll118",
   "license": "ISC",
   "devDependencies": {
