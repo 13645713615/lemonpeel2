@@ -15,7 +15,8 @@ const Router: Record<string, string[] | string> = {
   Dom: [
     'useEventListener',
     'useFullscreen',
-    'useScroll'
+    'useScroll',
+    'useBreakpoints'
   ],
   Data: [
     'useSelections',

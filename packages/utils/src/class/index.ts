@@ -7,3 +7,4 @@
  */
 export * from "./Emiter"
 export * from "./Cache"
+export * from "./Breakpoints"

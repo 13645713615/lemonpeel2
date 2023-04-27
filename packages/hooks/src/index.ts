@@ -28,6 +28,8 @@ export * from "./useEventListener"
 export * from "./useFullscreen"
 export * from "./useScroll"
 export * from "./useRefList"
+export * from "./useBreakpoints"
+
 
 //data
 export * from "./useSelections"
