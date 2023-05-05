@@ -18,11 +18,11 @@ map:
 ## 安装
 
 ```bash
-$ npm install --save lemonpeel2/hooks
+$ npm install --save @lemonpeel2/hooks
 # or
-$ yarn add lemonpeel2/hooks
+$ yarn add @lemonpeel2/hooks
 # or
-$ pnpm add lemonpeel2/hooks
+$ pnpm add @lemonpeel2/hooks
 ```
 
 ## 使用
