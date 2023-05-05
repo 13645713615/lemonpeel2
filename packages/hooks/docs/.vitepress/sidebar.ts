@@ -21,7 +21,8 @@ const Router: Record<string, string[] | string> = {
   Data: [
     'useSelections',
     'usePagination',
-    'useTable'
+    'useTable',
+    'useValidation'
   ],
   State: [
     'useState',

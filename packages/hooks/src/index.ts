@@ -34,7 +34,7 @@ export * from "./useBreakpoints"
 //data
 export * from "./useSelections"
 export * from "./usePagination"
-export * from "./useTable"
+export * from "./useValidation"
 
 
 
