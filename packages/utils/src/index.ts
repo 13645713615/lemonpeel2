@@ -11,4 +11,5 @@ export * from "./dom"
 export * from "./lang"
 export * from "./promise"
 export * from "./collection"
+export * from "./function"
 
